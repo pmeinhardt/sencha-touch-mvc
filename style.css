@@ -1,0 +1,5 @@
+a, a:active, a:focus, a:hover, a:link, a:visited {
+    color: white;
+    padding: .5em;
+    text-shadow: 0 -1px rgba(0, 0, 0, .5);
+}

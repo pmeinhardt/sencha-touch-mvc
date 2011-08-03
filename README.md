@@ -1,0 +1,29 @@
+Sencha Touch MVC setup and new navigation controller
+===
+
+This minimalist example implementation demonstrates how to enable stack-based navigation in [Sencha Touch](www.sencha.com/products/touch/) applications.
+
+_There's probably a lot of room for improvements as I only spontaneously threw together this code. Your feedback is more then welcome._
+
+
+Getting started
+---
+
+As demonstrated through this code, you can easily push controllers onto and pop them from the navigation stack through a variety of methods (w/ a specified action):
+
+Pushing:
+
+  1. `Ext.redirect('navigation/push/<controller-name>/<action-name>')`
+  2. `<a href="#navigation/push/.../...">See details view</a>`
+
+Popping:
+
+  1. `Ext.redirect('navigation/pop')`
+  2. `Ext.dispatch({controller: 'navigation', action: 'pop'})`
+  3. `<a href="">Go back</a>`
+
+
+Implementation details
+---
+
+The whole idea is based on 2 specialized routes (see `app/routes.js`) for intercepting push and pop calls. Our navigation controller maintains a history of the called controller-action pairs so that it can rewind these (see `app/controllers/navigation.js`). Furthermore it allows controllers to determine, whether they were 'push'ed or 'pop'ped through an entry in the options parameter received by controller actions.
