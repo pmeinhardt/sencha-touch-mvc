@@ -18,9 +18,22 @@ Pushing:
 
 Popping:
 
-  1. `Ext.redirect('navigation/pop')`
-  2. `Ext.dispatch({controller: 'navigation', action: 'pop'})`
-  3. `<a href="">Go back</a>`
+  1. `Ext.dispatch({controller: 'navigation', action: 'pop'})`
+  2. `Ext.redirect('navigation/pop')`
+  3. `<a href="#navigation/pop">Go back</a>`
+
+Passing arguments:
+
+    `Ext.dispatch({
+      controller: 'navigation',
+      action: 'push',
+      to: {
+        controller: 'pushed-controller',
+        action: 'pushed-action',
+        historyUrl: 'pushed-controller/pushed-action',
+        param: Math.random() // will be available in pushed-action's options
+      }
+    })`
 
 
 Implementation details

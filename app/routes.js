@@ -15,5 +15,6 @@ Ext.Router.draw(function(map) {
   // Provide default routing behavior, mapping '#controller/action' URL hashes.
   // A '#root/index' route will dispatch the 'root' controllers 'index' action.
   map.connect(':controller/:action');
+  map.connect(':controller/:action/:id');
   
 });

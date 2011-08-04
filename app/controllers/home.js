@@ -1,7 +1,7 @@
 Ext.regController('home', {
   
   index: function(options) {
-    var pushed = (options.navigation === 'push'),
+    var pushed = (options.navigation !== 'pop'),
         animation = (pushed)? 'fade' : {type: 'slide', reverse: true};
     
     if (!this.view) {

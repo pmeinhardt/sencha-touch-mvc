@@ -4,7 +4,7 @@
     layout: 'fit',
     initComponent: function() {
       
-      this.html = '';
+      this.tpl = new Ext.Template('..and passing arguments: {param}');
       
       this.dockedItems = [{
         xtype: 'toolbar',

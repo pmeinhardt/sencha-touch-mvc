@@ -10,41 +10,43 @@ Ext.regController('navigation', {
   },
   
   push: function(options) {
-    this.history = this.history || [];
+    var stack = this.stack = this.stack || [],
+        top = this.top;
     
-    if (this.current !== undefined) {
-      this.history.push(this.current);
+    if (top !== undefined) {
+      stack.push(top);
     }
     
-    this.current = Ext.apply(options, {
+    top = this.top = Ext.apply(options, options.to || {
       controller: options['_controller'],
       action: options['_action'],
       historyUrl: options.historyUrl.substr('navigation/push/'.length)
     });
     
-    delete this.current['_controller'];
-    delete this.current['_action'];
+    delete top['_controller'];
+    delete top['_action'];
     
-    if (this.history.length === 0) {
+    if (stack.length === 0) {
       // provide an initial back item when first invoking a push action
       // i.e. in the application's launch method, so you can at least
       // go back to the home screen when invoking the app in a nested state –
       // e.g. via index.html#some-controller/some-action.
-      this.history.push(this.current);
+      stack.push(top);
     }
     
-    Ext.dispatch(Ext.apply(this.current, {navigation: 'push'}));
+    Ext.dispatch(Ext.apply(top, { navigation: 'push' }));
     
-    this.log('navigate to: %s > %s', this.current.controller, this.current.action);
+    this.log('> %s::%s', top.controller, top.action);
   },
   
   pop: function() {
-    this.current = (this.history)? this.history.pop() : undefined;
-    if (this.current !== undefined) {
-      this.current.dispatched = false;
-      Ext.dispatch(Ext.apply(this.current, {navigation: 'pop'}));
+    var stack = this.stack,
+        top = this.top = (stack)? stack.pop() : undefined;
+    if (top !== undefined) {
+      top.dispatched = false;
+      Ext.dispatch(Ext.apply(top, { navigation: 'pop' }));
       
-      this.log('navigate back to: %s > %s', this.current.controller, this.current.action);
+      this.log('< %s::%s', top.controller, top.action);
     }
   }
   
