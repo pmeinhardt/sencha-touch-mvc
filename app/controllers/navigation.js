@@ -25,6 +25,14 @@ Ext.regController('navigation', {
     delete this.current['_controller'];
     delete this.current['_action'];
     
+    if (this.history.length === 0) {
+      // provide an initial back item when first invoking a push action
+      // i.e. in the application's launch method, so you can at least
+      // go back to the home screen when invoking the app in a nested state –
+      // e.g. via index.html#some-controller/some-action.
+      this.history.push(this.current);
+    }
+    
     Ext.dispatch(Ext.apply(this.current, {navigation: 'push'}));
     
     this.log('navigate to: %s > %s', this.current.controller, this.current.action);
