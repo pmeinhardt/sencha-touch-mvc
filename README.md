@@ -36,6 +36,22 @@ Passing arguments:
     })`
 
 
+Goodies
+---
+
+Apart from the controller part, there are some special view included in this package: A back button (registered as xtype: 'backbutton') and a 'navigationbar' which provide a configurable shortcut for the default behavior:
+
+    `this.dockedItems = [{
+      xtype: 'navigationbar',
+      title: 'I\'m a navigation bar'
+    }];
+    
+    // simply pass {items: []} if you don't want the back button
+    // or just override it with another one`
+
+see `app/views/navigation.js` for details.
+
+
 Implementation details
 ---
 

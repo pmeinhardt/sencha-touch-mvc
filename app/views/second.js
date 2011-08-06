@@ -6,20 +6,11 @@
       
       this.tpl = new Ext.Template('..and passing arguments: {param}');
       
+      // Pre-defined navigationbar type
+      // with back button
       this.dockedItems = [{
-        xtype: 'toolbar',
-        title: 'Second',
-        items: [{
-          ui: 'back',
-          text: 'Pop',
-          scope: this,
-          handler: function() {
-            Ext.dispatch({
-              controller: 'navigation',
-              action: 'pop'
-            });
-          }
-        }]
+        xtype: 'navigationbar',
+        title: 'Second'
       }];
       
       this.style = 'background: #fcd300'
