@@ -3,7 +3,7 @@ Sencha Touch MVC setup and new navigation controller
 
 This minimalist example implementation demonstrates how to enable stack-based navigation in [Sencha Touch](www.sencha.com/products/touch/) applications.
 
-_There's probably a lot of room for improvements as I only spontaneously threw together this code. Your feedback is more then welcome._
+_There's probably a lot of room for improvements as I only spontaneously threw together this code. Your feedback is more than welcome._
 
 
 Getting started
