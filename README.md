@@ -39,7 +39,7 @@ Passing arguments:
 Goodies
 ---
 
-Apart from the controller part, there are some special view included in this package: A back button (registered as xtype: 'backbutton') and a 'navigationbar' which provide a configurable shortcut for the default behavior:
+Apart from the controller part, there are some special views included in this package: A back button (registered as xtype: 'backbutton') and a 'navigationbar', which provide a configurable shortcut for the default behavior:
 
     `this.dockedItems = [{
       xtype: 'navigationbar',
